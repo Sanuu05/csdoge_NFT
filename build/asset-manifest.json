@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2b19a0f6.chunk.css",
+    "main.js": "/static/js/main.4e2b4fb1.chunk.js",
+    "main.js.map": "/static/js/main.4e2b4fb1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0bac514d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0bac514d.js.map",
+    "static/css/2.450bcdb5.chunk.css": "/static/css/2.450bcdb5.chunk.css",
+    "static/js/2.4334df2a.chunk.js": "/static/js/2.4334df2a.chunk.js",
+    "static/js/2.4334df2a.chunk.js.map": "/static/js/2.4334df2a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.450bcdb5.chunk.css.map": "/static/css/2.450bcdb5.chunk.css.map",
+    "static/css/main.2b19a0f6.chunk.css.map": "/static/css/main.2b19a0f6.chunk.css.map",
+    "static/js/2.4334df2a.chunk.js.LICENSE.txt": "/static/js/2.4334df2a.chunk.js.LICENSE.txt",
+    "static/media/1200.ef7ee5d0.png": "/static/media/1200.ef7ee5d0.png",
+    "static/media/email.f2e000b8.png": "/static/media/email.f2e000b8.png",
+    "static/media/insta.0963b7a5.png": "/static/media/insta.0963b7a5.png",
+    "static/media/md.f8509904.png": "/static/media/md.f8509904.png",
+    "static/media/telegram.8265879e.png": "/static/media/telegram.8265879e.png",
+    "static/media/twitter.b741d20d.png": "/static/media/twitter.b741d20d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0bac514d.js",
+    "static/css/2.450bcdb5.chunk.css",
+    "static/js/2.4334df2a.chunk.js",
+    "static/css/main.2b19a0f6.chunk.css",
+    "static/js/main.4e2b4fb1.chunk.js"
+  ]
+}

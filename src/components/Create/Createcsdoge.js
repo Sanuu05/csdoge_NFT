@@ -81,31 +81,7 @@ function Createcsdoge({ acc, web3main }) {
 
     }
 
-    // const submit = (e) => {
-    //     e.preventDefault()
-    //     const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
-    //     //we gather a local file from the API for this example, but you can gather the file from anywhere
-    //     let data = new FormData();
-    //     data.append('file', img);
-    //     return axios.post(url,
-    //         data,
-    //         {
-    //             headers: {
-    //                 'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
-    //                 'pinata_api_key': "ec9effdc900b62256d28",
-    //                 'pinata_secret_api_key': "9d335121cc2b2dd362b4a1c0de445d91a04017c4428a35003c02395e56e4f8ab"
-    //             }
-    //         }
-    //     ).then(function (response) {
-    //         //handle response here
-    //         console.log("hash",response?.data?.IpfsHash)
-    //         // swaps(response?.data?.IpfsHash);
-    //         mintcsdoge(response?.data?.IpfsHash)
-    //     }).catch(function (error) {
-    //         //handle error here
-    //         console.log('err',error)
-    //     });
-    // };
+
     const mintcsdoge = async (e) => {
         if (acc && web3main) {
             const accounts = await web3main.eth.getAccounts();

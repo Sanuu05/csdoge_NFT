@@ -7,35 +7,23 @@ import nft from '../../abi/nft.json'
 import { addrs } from '../../abi/address'
 import { Link } from 'react-router-dom';
 import { useMoralis, useMoralisQuery } from "react-moralis";
-// const BASE_URL = "https://my-json-server.typicode.com/themeland/netstorm-json/collections";
 
 function Collections({acc,web3main}) {
     const [colllist, setcolllist] = useState()
-    // const [assetist, setassetlist] = useState()
-    // const [allcolllist, allsetcolllist] = useState([])
     const [active, setactive] = useState('sales')
     const [alldata, setalldata] = useState([])
     const [show, setshow] = useState(false)
-    // const [aldatafil, setaldatafil] = useState(alldata)
-    // const [result, setresult] = useState([])
     const { Moralis } = useMoralis();
     const [spi, setspin] = useState()
     const [accountid, setaccountid] = useState()
     const dataa = useMoralisQuery('CREATECSDOGECOL')
     console.log('addfff', dataa?.data)
     const [chainid,setchainid] = useState()
-    // useEffect(()=>{
-    //     const del = dataa?.data?.map((v)=>v.destroy().then((vi)=>console.log(vi)))
-
-    // },[dataa])
 
     useEffect(async () => {
         if(acc && web3main){
             const accounts1 = await web3main.eth.getAccounts();
         setaccountid(accounts1[0])
-        // const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-       
-        // setchainid(chainId)
         totalcolection()
     }
 
@@ -47,7 +35,6 @@ function Collections({acc,web3main}) {
 
             const accounts = await web3main.eth.getAccounts();
             let userwalletaddresss = accounts[0];
-            // window.web3 = new Web3(window.ethereum);
             console.log('ccc', userwalletaddresss)
             let swaping = new web3main.eth.Contract(nft, addrs)
 
@@ -81,17 +68,6 @@ function Collections({acc,web3main}) {
 
             swaping.methods.collectiondetails(id).call({ from: userwalletaddresss })
                 .then((fees) => {
-                    console.log("fff", fees);
-                    // const GameScore = Moralis.Object.extend("CREATECSDOGECOL");
-                    // const gameScore = new GameScore();
-                    // gameScore?.set("collectionName", fees[2]);
-                    // gameScore?.set("displayName", fees[3]);
-                    // gameScore?.set("websiteUrl", fees[4]);
-                    // gameScore?.set("collectionDescription", fees[5]);
-                    // gameScore?.set("collectionImg", fees[6]);
-                    // gameScore?.set("collectionId", fees[0]);
-
-                    // gameScore.save().then((v)=>console.log(v))
                     setactive(id)
                     getalllist(fees)
 
@@ -108,8 +84,6 @@ function Collections({acc,web3main}) {
 
 
     }
-    console.log('aall', alldata)
-    
 
 
     return (

@@ -45,11 +45,6 @@ function ExploreTwo({ colid ,ckkid,web3main}) {
 
             swaping.methods.nftinformation(id).call({ from: userwalletaddresss })
                 .then((fees) => {
-                    console.log('nft', fees)
-                    // console.log('ndftid',id)
-                    // localStorage.setItem(`${id}nft${nftid}`, JSON.stringify(fees))
-                    // setnewnft(fees)
-                    // setnid(id)
                     callasset(fees)
 
 
@@ -74,9 +69,6 @@ function ExploreTwo({ colid ,ckkid,web3main}) {
                                 <span>Assets</span>
                                 <h3 className="mt-3 mb-0">Assets</h3>
                             </div>
-                            {/* <div className="intro-btn">
-                                <a className="btn content-btn text-left" href="/explore-1">More</a>
-                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -94,27 +86,12 @@ function ExploreTwo({ colid ,ckkid,web3main}) {
                                             <img className="card-img-top" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
                                         </Link>
                                         {/* Seller */}
-                                        {/* <Link className="seller" to={{
-                                            pathname:"/col-details",
-                                            state:val
-                                        }}>
-                                            <div className="seller-thumb avatar-lg">
-                                                <img className="rounded-circle" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
-                                            </div>
-                                        </Link> */}
+                                      
                                     </div>
                                     {/* Card Caption */}
                                     <div className="card-caption col-12 p-0">
                                         {/* Card Body */}
-                                        {/* <div className="card-body mt-4">
-                                        <Link to={{
-                                            pathname:"/col-details",
-                                            state:val
-                                        }} >
-                                                <h5 className="mb-2">{val? val[2]:null}</h5>
-                                            </Link>
-                                            <span>{val? val[3]:null}</span>
-                                        </div> */}
+                                        
                                         <div className="card-body px-2 mynftdes">
                                             <Link style={{display:'flex'}} to={`/item-details/${val[0]}`} >
                                                 <h5 style={{textTransform:'capitalize'}} className="mb-0">{val ? val[1] : null}</h5>

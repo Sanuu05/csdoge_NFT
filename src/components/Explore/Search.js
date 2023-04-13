@@ -11,27 +11,16 @@ import { attribute } from 'dom-helpers';
 function ExploreTwo({ colid ,acc,web3main}) {
     // console.log('cca',acc)
     const [colllist, setcolllist] = useState()
-    // const [assetist, setassetlist] = useState()
-    // const [allcolllist, allsetcolllist] = useState([])
-    // const [active, setactive] = useState('sales')
     const [alldata, setalldata] = useState([])
     const [show, setshow] = useState(false)
-    // const [aldatafil, setaldatafil] = useState(alldata)
     const [result, setresult] = useState([])
     const [dataresult, datasetresult] = useState([])
     const [resulta, setresulta] = useState([])
     const [ddresulta, setddresulta] = useState([])
     const { word } = useParams()
-    // console.log('aashie', word)
     const [assetist, setassetlist] = useState()
     const [allcolllist, allsetcolllist] = useState([])
-    // const [allmaindata,setallmaindata] = useState()
-    // const [subdata,setsubdata] = useState([])
-    // const [subdata2,setsubdata2] = useState([])    
-    // const [subdata3,setsubdata3] = useState([])
     const [accountid,setaccountid] = useState()
-    console.log('web',acc)
-    
     useEffect(async() => {
         if(acc && web3main){
         totalcolection()
@@ -96,11 +85,7 @@ function ExploreTwo({ colid ,acc,web3main}) {
 
 
     }
-    // useEffect(()=>{
-    //     if(acc & web3main){
-    //     totalnft()
-    //     }
-    // },[acc,web3main])
+   
      
      const totalnft = async () => {
          if (acc && web3main) {
@@ -125,15 +110,7 @@ function ExploreTwo({ colid ,acc,web3main}) {
  
          }
      }
-    //  useEffect(() => {
-    //      for (let i = 1; i <= assetist; i++) {
-    //          nftinfo(i);
-             
-             
-    //      }
- 
- 
-    //  }, [assetist])
+
  
      const nftinfo = async (id) => {
          console.log('four fun',id)
@@ -199,8 +176,7 @@ function ExploreTwo({ colid ,acc,web3main}) {
         }
 
     }, [word,dataa1?.data])
-    console.log('aa',dataresult)
-    console.log('aa1',ddresulta)
+
     useEffect(() => {
 
         if (word !== "") {
@@ -213,41 +189,7 @@ function ExploreTwo({ colid ,acc,web3main}) {
         }
 
     }, [word,allcolllist])
-    console.log('result',dataresult)
-    // useEffect(() => {
-
-    //     if (word !== "") {
-    //         // console.log('aaa', word)
-    //         const newlist = coldata.filter((con) => {
-    //             return Object.values(con).join(" ").toLowerCase().includes(word.toLowerCase())
-    //         })
-    //        setsubdata(newlist)
-    //     }
-
-    // }, [word,allcolllist])
-    // useEffect(() => {
-
-    //     if (word !== "") {
-    //         // console.log('aaa', word)
-    //         const newlist = data2.filter((con) => {
-    //             return Object.values(con).join(" ").toLowerCase().includes(word.toLowerCase())
-    //         })
-    //        setsubdata2(newlist)
-    //     }
-
-    // }, [word,allcolllist])
-    // useEffect(() => {
-
-    //     if (word !== "") {
-    //         // console.log('aaa', word)
-    //         const newlist = data1.filter((con) => {
-    //             return Object.values(con).join(" ").toLowerCase().includes(word.toLowerCase())
-    //         })
-    //        setsubdata3(newlist)
-    //     }
-
-    // }, [word,allcolllist])
-    // console.log('result2',resulta)
+    
 
    
     return (
@@ -262,9 +204,7 @@ function ExploreTwo({ colid ,acc,web3main}) {
                                 <span>Search {word}</span>
                                 <h3 className="mt-3 mb-0">Assets</h3>
                             </div>
-                            {/* <div className="intro-btn">
-                                <a className="btn content-btn text-left" href="/explore-1">More</a>
-                            </div> */}
+                          
                         </div>
                     </div>
                 </div>
@@ -315,28 +255,11 @@ function ExploreTwo({ colid ,acc,web3main}) {
                                         <Link to={`/item-details/${val[0]}`}  >
                                             <img className="card-img-top" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
                                         </Link>
-                                        {/* Seller */}
-                                        {/* <Link className="seller" to={{
-                                            pathname:"/col-details",
-                                            state:val
-                                        }}>
-                                            <div className="seller-thumb avatar-lg">
-                                                <img className="rounded-circle" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
-                                            </div>
-                                        </Link> */}
+                                      
                                     </div>
                                     {/* Card Caption */}
                                     <div className="card-caption col-12 p-0">
-                                        {/* Card Body */}
-                                        {/* <div className="card-body mt-4">
-                                        <Link to={{
-                                            pathname:"/col-details",
-                                            state:val
-                                        }} >
-                                                <h5 className="mb-2">{val? val[2]:null}</h5>
-                                            </Link>
-                                            <span>{val? val[3]:null}</span>
-                                        </div> */}
+                                      
                                         <div className="card-body">
                                             <Link to={`/item-details/${val[0]}`} >
                                                 <h5 style={{textTransform:'capitalize'}} className="mb-0">{val ? val[1] : null}</h5>

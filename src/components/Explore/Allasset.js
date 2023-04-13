@@ -21,25 +21,13 @@ function Allasset({ allnft, acc, web3main }) {
     const dataa = useMoralisQuery('CREATECSDOGENFT')
     console.log('addfff', dataa?.data)
     const [chainid, setchainid] = useState()
-    // useEffect(()=>{
-    // const filter = dataa?.data?.filter((v)=>v?.attributes?.collectionId!=="0")
-    // console.log('vbvbfil',filter)
-
-    // const del = filter?.map((v)=>v.destroy().then((vi)=>console.log(vi)))
-
-    // },[dataa])
-    // const vb = dataa?.data?.map(v=>console.log("vbvbv",v?.attributes?.nftId))
-
-
+ 
 
     useEffect(async () => {
         if (acc, web3main) {
-            // const accounts1 = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const accounts1 = await web3main.eth.getAccounts();
             setaccountid(accounts1)
-            // const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-
-            // setchainid(chainId)
+        
             totalnft()
         }
     }, [acc, web3main])
@@ -48,8 +36,6 @@ function Allasset({ allnft, acc, web3main }) {
 
         if (acc && web3main) {
             setshow(true)
-
-            //  console.log(accounts);
             const accounts = await web3main.eth.getAccounts();
             let userwalletaddresss = accounts[0];
             console.log('ccc', userwalletaddresss)
@@ -73,20 +59,6 @@ function Allasset({ allnft, acc, web3main }) {
 
         }
     }
-    // useEffect(() => {
-    //     console.log('cl',assetist)
-    //     if(acc & web3main){
-    //     for (let i = 1; i <= Number(assetist); i++) {
-    //         console.log('cl',i)
-    //         nftinfo(i);
-    //         setspin(i)
-
-
-    //     }
-    // }
-
-    // }, [assetist,acc,web3main])
-
     const nftinfo = async (id) => {
         // console.log('four fun')
         if (acc && web3main) {
@@ -100,15 +72,6 @@ function Allasset({ allnft, acc, web3main }) {
                 .then((fees) => {
 
                     getallasset(fees)
-                    // const GameScore = Moralis.Object.extend("CREATECSDOGENFT");
-                    // const gameScore = new GameScore();
-                    // gameScore?.set("nftName", fees[1]);
-                    // gameScore?.set("nftId", fees[0]);
-                    // gameScore?.set("nftOwner", fees[3]);
-                    // gameScore?.set("nftDes", fees[5]);
-                    // gameScore?.set("nftImg", fees[6]);
-                    // gameScore?.save()
-
                 }).catch()
 
         }
@@ -119,26 +82,6 @@ function Allasset({ allnft, acc, web3main }) {
         ])
 
     }
-    // useEffect(()=>{
-    //     dataa?.data?.map(async(v,i)=>{
-    //         const findd= await allcolllist?.find(a=>a[0]===v?.attributes?.nftId)
-    //         if(findd===undefined){
-    //             console.log('bnor')
-
-    //             findd?.set("nftName", findd[1]);
-    //             findd?.set("nftId", findd[0]);
-    //             findd?.set("nftOwner", findd[3]);
-    //             findd?.set("nftDes", findd[5]);
-    //             findd?.set("nftImg", findd[6]);
-    //             findd?.save()
-    //         }
-    //         else{
-    //             console.log("yes")
-    //         }
-    //     })
-
-    // },[dataa?.data?.length])
-    console.log('all', allcolllist)
 
     return (
 

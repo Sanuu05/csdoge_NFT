@@ -21,9 +21,6 @@ function Csdoge({ acc, web3main }) {
     console.log('csdogeass', acc)
     const [allfixed, setallfix] = useState([])
     const [allp, setallp] = useState([])
-    // const [active, setactive] = useState('sales')
-    // const [list, setlist] = useState([])
-    // const [list2, setlist2] = useState([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [chainid, setchainid] = useState()
@@ -34,7 +31,6 @@ function Csdoge({ acc, web3main }) {
     const [pricelast, setpricelast] = useState([])
 
     const [tokenid, settokenid] = useState()
-    // const [allprice, setallprice] = useState()
     const [cklist, setcklist] = useState([])
     const [accountid, setaccountid] = useState()
     const [burnc, setburnc] = useState()
@@ -91,13 +87,6 @@ function Csdoge({ acc, web3main }) {
 
             swaping.methods.nftinformation(id).call({ from: userwalletaddresss })
                 .then((fees) => {
-                    // console.log(`detail${id}`,fees);
-                    // setspin(fees)
-
-                    // localStorage.setItem(`buylist${id}`, JSON.stringify(fees))
-                    // setArr(id)
-                    // salenftprie(fees[0])
-                    console.log(fees)
                     swaping.methods.listofsalenft(id).call({ from: userwalletaddresss })
                         .then((length) => {
 
@@ -128,9 +117,7 @@ function Csdoge({ acc, web3main }) {
 
     }
     const dataa = useMoralisQuery('CREATECSDOGENFT')
-    // console.log('dataaaaa', dataa?.data)
     const fildata = dataa?.data?.filter((v) => Number(v?.attributes?.csprice) > 0)
-    console.log('fildata', fildata)
 
     const salenftprie = async (id) => {
         // console.log('riht',id)
@@ -146,10 +133,6 @@ function Csdoge({ acc, web3main }) {
                         id: id, value: Number(length[3]) / 1000000000000000000
                     }
                     console.log('aaaprice', length);
-                    // setlist(length[1])
-                    // setlist2(length[1])
-                    // localStorage.setItem(`normasale${id}`, (length[3]))
-                    // setpricearr(id)
                     getallprice(val)
                 })
                 .catch()
@@ -169,11 +152,6 @@ function Csdoge({ acc, web3main }) {
 
     }
     const buyfixednft = async (collectionid, tokenid,ckamout ) => {
-        console.log('buy nft fix')
-        // let amount = Number((allp.find(p => p.id === tokenid ? allp : null)).value)
-        // let ckamout = amount
-        // console.log('ckk', ckamout)
-
 
         if (web3main && ckamout) {
             // alert('hello')
@@ -235,11 +213,6 @@ function Csdoge({ acc, web3main }) {
 
     console.log(cklist)
     const buycsdoge = async (collectionid, tokenid,ckamout) => {
-        console.log('buy csdoe')
-
-        // let amount = Number((allp.find(p => p.id === tokenid ? allp : null)).value)
-        // let ckamout = amount
-        // console.log("amt", amount)
         setShow(true)
         if (acc && web3main && ckamout) {
             const accounts = await web3main.eth.getAccounts();
@@ -268,8 +241,6 @@ function Csdoge({ acc, web3main }) {
     }
     const buycopiesnft = async (tokenid, boolvalue, amount) => {
         console.log('buy copy')
-        // let amount = Number((allp.find(p => p.id === tokenid ? allp : null)).value)
-        // // let ckamout =  amount / 1000000000000000000
         setShow(true)
         console.log('ckamout', amount)
 
@@ -377,21 +348,12 @@ function Csdoge({ acc, web3main }) {
             <div className="container-fuild px-3">
                 <div className="row">
                     <div className="col-12">
-                        {/* Intro */}
-                        {/* {
-                            accountid === userid ? <NavLink to="/createcsdoge">
-                                <button className="d-block btn btn-bordered-white mt-4 w-100">Create CSdoge</button>
-                            </NavLink> : null
-                        } */}
-
+                      
                         <div className="intro d-flex justify-content-between align-items-end m-0">
                             <div className="intro-content">
                                 <span>CSDOGE</span>
                                 <h3 className="mt-3 mb-0">CSDOGE</h3>
                             </div>
-                            {/* <div className="intro-btn">
-                                    <a className="btn content-btn text-left" href="/explore-2">{this.state.data.btnText}</a>
-                                </div> */}
                         </div>
                     </div>
                 </div>
@@ -440,28 +402,12 @@ function Csdoge({ acc, web3main }) {
                                                     <Link to={`/cs-details/${val[0]}`} >
                                                         <img className="card-img-top" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
                                                     </Link>
-                                                    {/* Seller */}
-                                                    {/* <Link className="seller" to={{
-                                                pathname:"/col-details",
-                                                state:val
-                                            }}>
-                                                <div className="seller-thumb avatar-lg">
-                                                    <img className="rounded-circle" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
-                                                </div>
-                                            </Link> */}
+                                                 
                                                 </div>
                                                 {/* Card Caption */}
                                                 <div className="card-caption col-12 p-0 csdetail">
                                                     {/* Card Body */}
-                                                    {/* <div className="card-body mt-4">
-                                            <Link to={{
-                                                pathname:"/col-details",
-                                                state:val
-                                            }} >
-                                                    <h5 className="mb-2">{val? val[2]:null}</h5>
-                                                </Link>
-                                                <span>{val? val[3]:null}</span>
-                                            </div> */}
+                                                   
                                                     <Link to={`/cs-details/${val[0]}`}>
 
                                                         <h5 style={{ textTransform: 'capitalize' }} className="mb-0">{val ? val[1] : null}</h5>
@@ -490,50 +436,16 @@ function Csdoge({ acc, web3main }) {
 
                                                         </div>
                                                         <div className="card-bottom d-flex justify-content-between">
-                                                            {/* {allp.map((vala) => {
-
-                                                                if (vala.id === val[0]) {
-                                                                    return <span>{allp[id]?.value} {cklist.map((vala) => {
-                                                                        if (vala.id === val[0]) {
-                                                                            return <>
-                                                                                {
-                                                                                    vala.ck ? "CSDOGE" : "BNB"
-                                                                                }
-                                                                            </>
-                                                                        }
-                                                                    })} </span>
-
-                                                                }
-
-
-                                                            })} */}
+                                                            
                                                             <span>{val? val[10]:null} {val?val[11]?"CSDOGE" : "BNB":null}</span>
-                                                            {/* {
-                                                                cklist?.map((ck, i) => {
-                                                                    if (ck.id === val[0]) {
-                                                                        return <span >{ck.copy} of {ck.total} </span>
-
-                                                                    }
-
-                                                                })
-                                                            } */}
+                                                           
                                                             {
                                                                 <span >{val?val[12]:null} of {val? val[13]:null} </span>
                                                             }
 
 
                                                         </div>
-                                                        {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                                            {
-                                                                cklist?.map((ck, i) => {
-                                                                    if (ck.id === val[0]) {
-                                                                        return <ProgressBar className="mx-3" now={100 - (ck.copy / ck.total) * 100} />
-
-                                                                    }
-
-                                                                })
-                                                            }
-                                                        </div> */}
+                                                     
                                                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                                                         <ProgressBar className="mx-3" now={100 - (val?val[12]:null / val? val[13]:null) * 100} />
                                                             
@@ -541,77 +453,7 @@ function Csdoge({ acc, web3main }) {
                                                         
 
 
-                                                        {/* {cklist.map((vala) => {
-                                                            if (vala.id === val[0]) {
-                                                                return <>
-                                                                    {
-                                                                        vala.copy === 0 ? vala.ck ? <button className="btn btn-bordered-white btn-smaller mt-3" onClick={() => buycsdoge(val[7], val[0])}>Buy</button> : <button className="btn btn-bordered-white btn-smaller mt-3" onClick={() => buyfixednft(val[7], val[0])}>Buy</button> : vala.ck ? <Popup style={{ padding: '10px', backgroundColor: '#141324' }} trigger={<button className="btn btn-bordered-white btn-smaller mt-3">Buy CSDOGE</button>} position="top left">
-                                                                            {close => (
-                                                                                <div>
-                                                                                    <div style={{ padding: '10px', backgroundColor: '#141324' }}>
-                                                                                       
-                                                                                        <div className="form-group row">
-                                                                                            <div className="col-12 md-6 ">
-                                                                                                <label for="Gift">Gift</label>
-                                                                                                <input type="radio" id="Gift" name="fav_language" checked={gift === true} onClick={() => setgift(true)} />
-                                                                                            </div>
-                                                                                            <div className="col-12 md-6">
-                                                                                                <label for="Own" >Own</label>
-                                                                                                <input type="radio" id="Own" name="fav_language" checked={gift === false} onClick={() => setgift(false)} />
-                                                                                            </div>
-
-
-                                                                                        </div>
-                                                                                        {
-                                                                                            gift ? <div > <input type="text" className="mt-1" placeholder="Address" onChange={(e) => setadd(e.target.value)} /></div> : null
-                                                                                        }
-                                                                                        <div style={{ borderTop: '2px solid white' }}>
-                                                                                            <button className="btn btn-bordered-white btn-smaller mt-3" onClick={() => {
-                                                                                                buycopiesnft(val[0], true)
-                                                                                            }}>Buy</button>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            )}
-                                                                        </Popup> :
-                                                                            <Popup style={{ padding: '15px', backgroundColor: '#141324' }} trigger={<button className="btn btn-bordered-white btn-smaller mt-3">Buy CSDOGE</button>} position="top left">
-                                                                                {close => (
-                                                                                    <div>
-                                                                                        <div style={{ padding: '10px', backgroundColor: '#141324' }}>
-                                                                                           
-                                                                                            <div className="form-group row">
-                                                                                                <div className="col-12 md-6 ">
-                                                                                                    <label for="Gift">Gift</label>
-                                                                                                    <input type="radio" id="Gift" name="fav_language" checked={gift === true} onClick={() => setgift(true)} />
-                                                                                                </div>
-                                                                                                <div className="col-12 md-6">
-                                                                                                    <label for="Own" >Own</label>
-                                                                                                    <input type="radio" id="Own" name="fav_language" checked={gift === false} onClick={() => setgift(false)} />
-                                                                                                </div>
-
-
-                                                                                            </div>
-                                                                                            {
-                                                                                                gift ? <div > <input type="text" className="mt-1" placeholder="Address" onChange={(e) => setadd(e.target.value)} /> </div> : null
-                                                                                            }
-                                                                                            <div style={{ borderTop: '2px solid white' }}>
-                                                                                                <button className="btn btn-bordered-white btn-smaller ml-2 mt-3" onClick={() => {
-
-                                                                                                    buycopiesnft(val[0], false)
-                                                                                                }}>{gift ? "BUY(Gift)" : "Buy(Own)"}</button>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                )}
-                                                                            </Popup>
-
-                                                                    }
-                                                                   
-                                                                </>
-                                                            }
-                                                        })} */}
+                                                     
 
 
 
@@ -686,20 +528,7 @@ function Csdoge({ acc, web3main }) {
                                                         {
                                                             accountid === userid ?
                                                                 <button className="btn btn-bordered-white btn-smaller mt-3" onClick={() => burnmain(val[0])} >Burn CSDOGE</button> : null}
-                                                        {/* <button onClick={()=>setbar(cklist?.map((ck,i)=>{
-                                                if(ck.id === val[0]){
-                                                    return (ck.copy/ck.total )*100
-
-                                                }
-                                                
-                                            })
-                                            )}>ck</button> */}
-                                                        {
-
-                                                        }
-
-                                                        {/* <button className="btn btn-bordered-white btn-smaller mt-3" onClick={() => buyfixednft(val[7], val[0])}><i className="icon-handbag mr-2" />Buy sale</button> */}
-                                                    </div>
+                                               </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -746,20 +575,7 @@ function Csdoge({ acc, web3main }) {
 
                                                         <button className="btn btn-bordered-white btn-smaller mt-3" >Buy CSDOGE</button>
 
-
-
-                                                        {/* <button onClick={()=>setbar(cklist?.map((ck,i)=>{
-                                                 if(ck.id === val[0]){
-                                                     return (ck.copy/ck.total )*100
- 
-                                                 }
-                                                 
-                                             })
-                                             )}>ck</button> */}
-                                                        {
-
-                                                        }
-                                                        {/* <button className="btn btn-bordered-white btn-smaller mt-3" onClick={() => buyfixednft(val[7], val[0])}><i className="icon-handbag mr-2" />Buy sale</button> */}
+   
                                                     </div>
                                                 </div>
                                             </div>

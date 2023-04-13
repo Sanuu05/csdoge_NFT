@@ -26,17 +26,9 @@ function ExploreOne({ sale, acc ,web3main}) {
     // const [mainlist, setmainlist] = useState([])
     // const [mainlistauc, setmainlistauc] = useState([])
     const [arr, setArr] = useState([]);
-    // const [arrauc, setArrauc] = useState([]);
     const [price, setprice] = useState([])
     const [pricearr, setpricearr] = useState()
     const [payvalue, setpayvalue] = useState()
-    // const [modaldatao, setmodaldatao] = useState()
-    // const [modaldatac, setmodaldatac] = useState()
-    // const [modaldatai, setmodaldatai] = useState()
-    // const [modaldataaa, setmodaldataaa] = useState()
-    // const [modaldatap, setmodaldatap] = useState()
-    // const [modaldatacol, setmodaldatacol] = useState()
-    // const [modaldatatok, setmodaldatatok] = useState()
     const [allfixed, setallfix] = useState([])
     const [allp, setallp] = useState([])
     const [spin, setspin] = useState()
@@ -51,9 +43,6 @@ function ExploreOne({ sale, acc ,web3main}) {
         if (acc && web3main) {
             const accounts1 = await web3main.eth.getAccounts();
             setaccountid(accounts1[0])
-            // const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-
-            // setchainid(chainId)
         }
 
 
@@ -79,14 +68,6 @@ function ExploreOne({ sale, acc ,web3main}) {
                     console.log("id", id);
                     setdogid(id)
                     var listlen = id?.length
-                    // console.log('bn',length[0])
-                    // for (let i = 0; i < listlen; i++) {
-                    //     // console.log(`akk${i}`,length[0][i])
-                    //     // console.log(id[i])
-                    //     // nftinfo(id[i])
-                    //     // salenftprie(id[i])
-
-                    // }
                 })
                 .catch()
         }
@@ -102,14 +83,10 @@ function ExploreOne({ sale, acc ,web3main}) {
 
             swaping.methods.listofsalenft(id).call({ from: userwalletaddresss })
                 .then((length) => {
-                    // console.log('aaa', length);
                     setlist(length[0])
-                    // setlist2(length[1])
                     console.log('listone', length[0])
                     var listlen = length[0]?.length
-                    // console.log('bn',length[0])
                     for (let i = 0; i < listlen; i++) {
-                        // console.log(`akk${i}`,length[0][i])
                         const ll = length[0][i]
                         nftinfo(ll)
 
@@ -155,20 +132,6 @@ function ExploreOne({ sale, acc ,web3main}) {
     console.log('alldata', allfixed)
 
 
-
-    // useEffect(() => {
-    //     // console.log('5')
-    //     // console.log('lls',localStorage.getItem(`buylist1`))
-    //     newlist.map((val, i) => {
-    //         const pist = JSON.parse(localStorage.getItem(`buylist${val}`))
-    //         // console.log('ppp',pist)
-    //         setmainlist((old) => {
-    //             return [...old, pist===mainlist?null:pist]
-    //         })
-
-    //     })
-    // }, [arr])
-
     const salenftprie = async (id) => {
         // console.log('riht',id)
         if (acc && web3main) {
@@ -182,9 +145,6 @@ function ExploreOne({ sale, acc ,web3main}) {
                     const val = {
                         id: id, value: length[3]
                     }
-                    console.log('aaaprice',length);
-                    // setlist(length[1])
-                    // setlist2(length[1])
                     localStorage.setItem(`normasale${id}`, (length[3]))
                     setpricearr(id)
                     getallprice(val)
@@ -195,9 +155,7 @@ function ExploreOne({ sale, acc ,web3main}) {
     }
     const getallprice = (data) => {
         if (data.id === "0") {
-            // console.log('notallowed',data)
         } else {
-            // console.log('dataaallower',data)
             setallp((old) => [
                 ...old, data
             ])
@@ -208,11 +166,8 @@ function ExploreOne({ sale, acc ,web3main}) {
     console.log('popeice', allp)
     console.log('allpopeice', allprice)
     useEffect(() => {
-        // console.log('5')
-        // console.log('lls',localStorage.getItem(`buylist1`))
         newlist.map((val, i) => {
             const pist = localStorage.getItem(`normalsale${val}`)
-            // console.log('ppp',pist)
             setprice((old) => {
                 return [...old, pist]
             })
@@ -313,14 +268,12 @@ function ExploreOne({ sale, acc ,web3main}) {
 
 
     }
-    console.log('aallcoll', allfixed)
+   
     const dataa = useMoralisQuery('CREATECSDOGENFT')
-    console.log('dataaaaa', dataa?.data)
-
-    console.log('aallcoll', allfixed)
+ 
 
     const fildata = dataa?.data?.filter((v) => Number(v?.attributes?.nftPrice) > 0)
-    console.log('aallfix', fildata)
+    
 
 
 
@@ -533,21 +486,7 @@ function ExploreOne({ sale, acc ,web3main}) {
                                                                     <span>{val?.attributes?.nftPrice} BNB</span>
 
 
-                                                                    {/* <span>{item.count}</span> */}
-                                                                    {/* {
-                                                  alldata?.map((vv) => {
-                                                      if (vv[0] === val[7]) {
-                                                          return <Link to={{
-                                                              pathname: "/col-details",
-                                                              state: vv
-                                                          }} className="seller px-0">
-                                                              <img className="avatar-sm rounded-circle"  src={`https://ipfs.infura.io/ipfs/${vv ? vv[6] : null}`} alt="" />
-
-                                                              
-                                                          </Link>
-                                                      }
-                                                  })
-                                              } */}
+                                                     
 
                                                                 </div>
                                                                 <button style={{ border: '2px solid #99B7FF' }} className="btn btn-bordered-white btn-smaller mt-0" ><i className="icon-handbag mr-2" />Buy</button>
@@ -599,21 +538,7 @@ function ExploreOne({ sale, acc ,web3main}) {
                                                                     <span>{val?.attributes?.nftPrice} BNB</span>
 
 
-                                                                    {/* <span>{item.count}</span> */}
-                                                                    {/* {
-                                                  alldata?.map((vv) => {
-                                                      if (vv[0] === val[7]) {
-                                                          return <Link to={{
-                                                              pathname: "/col-details",
-                                                              state: vv
-                                                          }} className="seller px-0">
-                                                              <img className="avatar-sm rounded-circle"  src={`https://ipfs.infura.io/ipfs/${vv ? vv[6] : null}`} alt="" />
-
-                                                              
-                                                          </Link>
-                                                      }
-                                                  })
-                                              } */}
+                                                        
 
                                                                 </div>
                                                                 <button style={{ border: '2px solid #99B7FF' }} className="btn btn-bordered-white btn-smaller mt-0" ><i className="icon-handbag mr-2" />Buy</button>

@@ -9,37 +9,16 @@ import { Link } from 'react-router-dom';
 import { addrs } from '../../abi/address'
 import { useMoralis, useMoralisQuery } from "react-moralis";
 function AuctionsOne({auc,acc, web3main}) {
-    console.log('aucaucc',acc)
-    // const [active, setactive] = useState('auction')
     const [list, setlist] = useState([])
-    // const [list2, setlist2] = useState([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    // const [mainlist, setmainlist] = useState([])
-    // const [mainlistauc, setmainlistauc] = useState([])
     const [arr, setArr] = useState([]);
-    // const [arrauc, setArrauc] = useState([]);
-    // const [price, setprice] = useState([])
     const [pricearr, setpricearr] = useState()
-    // const [newlist, setnewlist] = useState([])
-    // const [payvalue, setpayvalue] = useState()
-    // const [highauc, sethighauc] = useState()
-    // const [highauid, sethighauid] = useState()
-    // const [modaldatao, setmodaldatao] = useState()
-    // const [modaldatac, setmodaldatac] = useState()
-    // const [modaldatai, setmodaldatai] = useState()
-    // const [modaldataaa, setmodaldataaa] = useState()
-    // const [modaldatap, setmodaldatap] = useState()
-    // const [modaldatacol, setmodaldatacol] = useState()
-    // const [modaldatatok, setmodaldatatok] = useState()
     const [exprice, setexprice] = useState()
     const [allfixed, setallfix] = useState([])
     const [allp, setallp] = useState([])
     const [allhighp, setallhighp] = useState([])
     const [timew, settimew] = useState([])
-    // const [p1, setp1] = useState()
-    // const [p2, setp2] = useState()
-    // const [tokenid, settokenid] = useState()
     const [colllist,setcolllist] = useState()
     const [alldata,setalldata] = useState([])
     const [chainid,setchainid] = useState()
@@ -49,12 +28,9 @@ function AuctionsOne({auc,acc, web3main}) {
     const [accountid, setaccountid] = useState()
     useEffect(async () => {
         if(acc && web3main){
-        // const accounts1 = await window.ethereum.request({ method: 'eth_requestAccounts' });
         const accounts1 = await web3main.eth.getAccounts();
         setaccountid(accounts1[0])
-        // const chainId = await window.ethereum.request({ method: 'eth_chainId' });
        
-        // setchainid(chainId)
        
         }
     }, [acc, web3main])
@@ -74,33 +50,19 @@ function AuctionsOne({auc,acc, web3main}) {
     const salenft = async (id) => {
         console.log('2')
         if (acc && web3main ) {
-            
-
-            // const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-
-
-            // let userwalletaddresss = accounts[0];
-            // window.web3 = new Web3(window.ethereum);
-            // let swaping = web3main.Contract(nft, addrs)
             const accounts = await web3main.eth.getAccounts();
             let userwalletaddresss = accounts[0];
             console.log('ack',accounts)
-            // window.web3 = new Web3(window.ethereum);
             console.log('ccc', userwalletaddresss)
             let swaping = new web3main.eth.Contract(nft, addrs)
 
             swaping.methods.listofsalenft(id).call({ from: userwalletaddresss })
                 .then((length) => {
-                    // console.log('listlist', length);
                     setlist(length[1])
-                    // setlist2(length[1])
                     var listlen = length[1]?.length
-                    // console.log('bnmm', listlen)
                     for (let i = 0; i < listlen; i++) {
-                        // console.log('akk',length[0][i])
                         const ll = length[1][i]
                         nftinfo(ll)
-                        // salenftprie(length[2])
 
                     }
                 })
@@ -172,9 +134,7 @@ function AuctionsOne({auc,acc, web3main}) {
     }
     const getallprice = (data) => {
         if (data.id === "0") {
-            // console.log('notallowed',data)
         } else {
-            // console.log('dataaallower',data)
             setallp((old) => [
                 ...old, data
             ])
@@ -192,17 +152,7 @@ function AuctionsOne({auc,acc, web3main}) {
 
 
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //     //   console.log('This will run every second!');
-    //       list?.map((val) => {
-    //         timer(val)
-    //         auctiondetail(val)
-    //         // console.log('aaaaaaa')
-    //     })
-    //     }, 1000);
-    //     return () => clearInterval(interval);
-    //   }, [list,pricearr,price]);
+
     const timer = async (id) => {
         // console.log('saa',id)
         if (acc && web3main) {
@@ -220,10 +170,6 @@ function AuctionsOne({auc,acc, web3main}) {
                     var day = Math.floor(fees / 86400)
                     var hr = Math.floor((fees - day * 86400) / 3600)
                     var minutesout = Math.floor((fees - day * 86400 - hr * 3600) / 60);
-                    // console.log("hr",hr)
-                    // console.log("day",day)
-                    // console.log("min",minutesout)
-                    
                     settime({ id: id, d: day, h: hr, m: minutesout })
 
 
@@ -248,9 +194,6 @@ function AuctionsOne({auc,acc, web3main}) {
             let swaping = new web3main.eth.Contract(nft, addrs)
             swaping.methods.auctiondetail(id).call({ from: userwalletaddresss })
                 .then((value) => {
-                    // console.log('assasacvbv',value);     
-                    // localStorage.setItem(`highauc${id}`, value[0])
-                    // localStorage.setItem(`highaucid${id}`, value[1])
                     var aucde = {
                         id: value[1],
                         val: value[0],
@@ -320,8 +263,6 @@ function AuctionsOne({auc,acc, web3main}) {
 
             swaping.methods.collectiondetails(id).call({ from: userwalletaddresss })
                 .then((fees) => {
-                    // console.log("fff", fees);
-                    // setactive(id)
                     getalllist(fees)
 
 
@@ -340,11 +281,7 @@ function AuctionsOne({auc,acc, web3main}) {
     console.log('aallcoll', allhighp)
 
     const dataa = useMoralisQuery('CREATECSDOGENFT')
-    console.log('dataaaaall', dataa?.data)
     const fildata = dataa?.data?.filter((v)=>Number(v?.attributes?.auction)>0)
-    console.log('fildata1',allfixed)
-    console.log('fildata2',chainid)
-    console.log('fildata3',acc)
 
 
     return (
@@ -380,15 +317,7 @@ function AuctionsOne({auc,acc, web3main}) {
                                         <Link to={`/item-details/${val[0]}`} >
                                             <img className="card-img-top" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
                                         </Link>
-                                        {/* Seller */}
-                                        {/* <Link className="seller" to={{
-                                            pathname:"/col-details",
-                                            state:val
-                                        }}>
-                                            <div className="seller-thumb avatar-lg">
-                                                <img className="rounded-circle" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
-                                            </div>
-                                        </Link> */}
+                                       
                                     </div>
                                     {/* Card Caption */}
                                     <div className="card-caption col-12 p-0">
@@ -435,7 +364,7 @@ function AuctionsOne({auc,acc, web3main}) {
                                                       return <Link to={`/col-details/${val[7]}`} className="seller d-flex align-items-center px-2" href="/item-details">
                                                         <img className="avatar-sm rounded-circle" src={`https://ipfs.infura.io/ipfs/${vv ? vv[6] : null}`} alt="" />
                                                        
-                                                        {/* <span className="ml-2">{val ? val[5] : null}</span> */}
+
                                                     </Link>
                                                   }
                                               })
@@ -443,8 +372,7 @@ function AuctionsOne({auc,acc, web3main}) {
                                             
                                             </div>
                                             <div className="card-bottom px-2 "  style={{ display: 'flex',fontSize:'15px'}}>
-                                                {/* <span>{item.price}</span>
-                                                            <span>{item.count}</span> */}
+                                               
                                                 {
 
 
@@ -458,7 +386,7 @@ function AuctionsOne({auc,acc, web3main}) {
                                                                             Number(u?.val) > Number(vala?.value) ? <> <span>{Number(u?.val) / 1000000000000000000} BNB </span></> :
                                                                                 <span>{Number( vala?.value / 1000000000000000000)}BNB  </span>
                                                                         }
-                                                                        {/* <p>{Number(u?.val) / 1000000000000000000} BNB = $ {(Number(u?.val) / 1000000000000000000) * 487} BNB </p> */}
+                                                                        
                                                                     </>
 
                                                                 }
@@ -478,10 +406,7 @@ function AuctionsOne({auc,acc, web3main}) {
 
 
                                         </div>
-                                        {/* <Link style={{display:'flex'}} to={`/item-details/${val[0]}`} >
-                                                <button className="btn btn-bordered-white btn-smaller mt-3" ><i className="icon-handbag mr-2" />Place Bid</button>
-</Link> */}
-                                        
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -494,15 +419,7 @@ function AuctionsOne({auc,acc, web3main}) {
                                         <Link to={`/item-details/${val[0]}`} >
                                             <img className="card-img-top" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
                                         </Link>
-                                        {/* Seller */}
-                                        {/* <Link className="seller" to={{
-                                            pathname:"/col-details",
-                                            state:val
-                                        }}>
-                                            <div className="seller-thumb avatar-lg">
-                                                <img className="rounded-circle" src={`https://ipfs.infura.io/ipfs/${val ? val[6] : null}`} alt="" />
-                                            </div>
-                                        </Link> */}
+                                      
                                     </div>
                                     {/* Card Caption */}
                                     <div className="card-caption col-12 p-0">
@@ -548,16 +465,14 @@ function AuctionsOne({auc,acc, web3main}) {
                                                       return <Link to={`/col-details/${val[7]}`} className="seller d-flex align-items-center px-2" href="/item-details">
                                                         <img className="avatar-sm rounded-circle" src={`https://ipfs.infura.io/ipfs/${vv ? vv[6] : null}`} alt="" />
                                                        
-                                                        {/* <span className="ml-2">{val ? val[5] : null}</span> */}
-                                                    </Link>
+                                                   </Link>
                                                   }
                                               })
                                           }
                                             
                                             </div>
                                             <div className="card-bottom px-2 "  style={{ display: 'flex',fontSize:'15px'}}>
-                                                {/* <span>{item.price}</span>
-                                                            <span>{item.count}</span> */}
+                                                        
                                                 {
 
 
@@ -571,7 +486,7 @@ function AuctionsOne({auc,acc, web3main}) {
                                                                             Number(u?.val) > Number(vala?.value) ? <> <span>{Number(u?.val) / 1000000000000000000} BNB </span></> :
                                                                                 <span>{Number(Number(vala?.value / 1000000000000000000))}BNB  </span>
                                                                         }
-                                                                        {/* <p>{Number(u?.val) / 1000000000000000000} BNB = $ {(Number(u?.val) / 1000000000000000000) * 487} BNB </p> */}
+                                                                       
                                                                     </>
 
                                                                 }
@@ -591,9 +506,7 @@ function AuctionsOne({auc,acc, web3main}) {
 
 
                                         </div>
-                                        {/* <Link style={{display:'flex'}} to={`/item-details/${val[0]}`} >
-                                                <button className="btn btn-bordered-white btn-smaller mt-3" ><i className="icon-handbag mr-2" />Place Bid</button>
-</Link> */}
+                     
                                         
                                     </div>
                                 </div>
@@ -647,17 +560,7 @@ function AuctionsOne({auc,acc, web3main}) {
                                             <p className="px-2" style={{display:'flex',margin:'0'}}>
                                             <span>Owned By</span><span style={{textTransform:'capitalize'}} className="ml-2">{val?.attributes?.nftOwner}</span> 
                                                 </p>
-                                          {/* {
-                                              alldata?.map((vv)=>{
-                                                  if(vv[0]===val[7]){
-                                                      return <Link to={`/item-details/${val[0]}`} className="seller d-flex align-items-center px-2" href="/item-details">
-                                                        <img className="avatar-sm rounded-circle" src={`https://ipfs.infura.io/ipfs/${vv ? vv[6] : null}`} alt="" />
-                                                       
-                                                    
-                                                    </Link>
-                                                  }
-                                              })
-                                          } */}
+                                 
                                             
                                             </div>
                                             <div className="card-bottom px-2 "  style={{ display: 'flex',fontSize:'15px'}}>
@@ -672,13 +575,7 @@ function AuctionsOne({auc,acc, web3main}) {
 
 
                                         </div>
-                                        {/* <Link style={{display:'flex'}} to={{
-                                                pathname: "/item-details",
-                                                state: val
-                                            }} >
-                                                <button className="btn btn-bordered-white btn-smaller mt-3" ><i className="icon-handbag mr-2" />Place Bid</button>
-</Link> */}
-                                        
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -725,17 +622,8 @@ function AuctionsOne({auc,acc, web3main}) {
                                             <p className="px-2" style={{display:'flex',margin:'0'}}>
                                             <span>Owned By</span><span style={{textTransform:'capitalize'}} className="ml-2">{val?.attributes?.nftOwner}</span> 
                                                 </p>
-                                          {/* {
-                                              alldata?.map((vv)=>{
-                                                  if(vv[0]===val[7]){
-                                                      return <Link to={`/item-details/${val[0]}`} className="seller d-flex align-items-center px-2" href="/item-details">
-                                                        <img className="avatar-sm rounded-circle" src={`https://ipfs.infura.io/ipfs/${vv ? vv[6] : null}`} alt="" />
-                                                       
-                                                    
-                                                    </Link>
-                                                  }
-                                              })
-                                          } */}
+                                        
+                                        
                                             
                                             </div>
                                             <div className="card-bottom px-2 "  style={{ display: 'flex',fontSize:'15px'}}>
@@ -750,12 +638,6 @@ function AuctionsOne({auc,acc, web3main}) {
 
 
                                         </div>
-                                        {/* <Link style={{display:'flex'}} to={{
-                                                pathname: "/item-details",
-                                                state: val
-                                            }} >
-                                                <button className="btn btn-bordered-white btn-smaller mt-3" ><i className="icon-handbag mr-2" />Place Bid</button>
-</Link> */}
                                         
                                     </div>
                                 </div>

@@ -13,15 +13,7 @@ class Breadcrumb extends Component {
                             <a style={{width:'50%',display:'flex',justifyContent:'center'}} href="/auctions">
                             <button className={this.props.subpage==="auction"?"activesale":""}  style={{width:'50%',border:'none',outline:'none',color:'white',fonSize:'22px',background:'none'}}>Auction</button>
                             </a>
-                            {/* Breamcrumb Content */}
-                            {/* <div className="breadcrumb-content text-center">
-                                <h2 className="m-0">{this.props.title}</h2>
-                                <ol className="breadcrumb d-flex justify-content-center">
-                                    <li className="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li className="breadcrumb-item"><a href="#">{this.props.subpage}</a></li>
-                                    <li className="breadcrumb-item active">{this.props.page}</li>
-                                </ol>
-                            </div> */}
+                         
                         </div>
             
                 </div>

@@ -6,22 +6,12 @@ import { addrs } from '../../abi/address'
 import { Link } from 'react-router-dom';
 
 function MyExplore({web3main}) {
-    // const [userdata, setuserdata] = useState([])
-    // const [arratdata, setarraydata] = useState([])
-    // const [idmain, setid] = useState(0)
-    // const [listid, setlistid] = useState([])
-    // const [ newdata,setnewdata ] = useState()
     const [alldata, setalldata] = useState([])
     const [spin, setspin] = useState()
     const [alldatan, setalldatan] = useState([])
 
-    // 0xA6bcD1A0725F16a0dc7eF500e1855E530a8BC110
-
     const userid = JSON.parse(localStorage.getItem('userid'))
     const getlist = userid ? userid.length ? userid[userid.length - 1] : null : null
-    console.log('assuserall', alldata)
-    // const userdataa = JSON.parse(localStorage.getItem(getlist))
-    // console.log('aaa',userdataa)
 
     useEffect(() => {
         // alert('useeffcet1')
@@ -93,9 +83,6 @@ function MyExplore({web3main}) {
                                 <span>My Collections</span>
                                 <h3 className="mt-3 mb-0">My Collections</h3>
                             </div>
-                            {/* <div className="intro-btn">
-                                    <a className="btn content-btn text-left" href="/explore-2">{this.state.data.btnText}</a>
-                                </div> */}
                         </div>
                     </div>
                 </div>

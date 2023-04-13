@@ -23,16 +23,15 @@ function Astcreate({ acc, web3main }) {
     const [ownername, setownername] = useState()
     const [assetname, setassetname] = useState()
     const [assetimg, setassetimg] = useState()
+    const[tokenid,settokenid]= useState()
     const { Moralis } = useMoralis();
+    const[datatype,setdatatype]= useState()
     const [assetdescrip, setassetdescrip] = useState()
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const [datatype, setdatatype] = useState()
     const history = useHistory()
-    const [tokenid, settokenid] = useState()
-    const [pay, setpay] = useState()
     const [price, setprice] = useState()
-    const [aid, setaid] = useState()
+
     console.log('ap', colid)
 
     const choosepic = (e) => {
@@ -86,84 +85,16 @@ function Astcreate({ acc, web3main }) {
 
 
     }
-    // const submit = (e) => {
-    //     e.preventDefault()
-    //     // setShow(true)
-    //     // nftidn()
-    //     if (price) {
-    //         const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
-    //         //we gather a local file from the API for this example, but you can gather the file from anywhere
-    //         let data = new FormData();
-    //         data.append('file', img);
-    //         return axios.post(url,
-    //             data,
-    //             {
-    //                 headers: {
-    //                     'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
-    //                     'pinata_api_key': "ec9effdc900b62256d28",
-    //                     'pinata_secret_api_key': "9d335121cc2b2dd362b4a1c0de445d91a04017c4428a35003c02395e56e4f8ab"
-    //                 }
-    //             }
-    //         ).then(function (response) {
-    //             //handle response here
-    //             console.log("hash", response?.data?.IpfsHash)
-    //             swaps(response?.data?.IpfsHash);
-    //         }).catch(function (error) {
-    //             //handle error here
-    //             console.log('err', error)
-    //         });
-
-
-
-    //     } else {
-    //         const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
-    //         //we gather a local file from the API for this example, but you can gather the file from anywhere
-    //         let data = new FormData();
-    //         data.append('file', img);
-    //         return axios.post(url,
-    //             data,
-    //             {
-    //                 headers: {
-    //                     'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
-    //                     'pinata_api_key': "ec9effdc900b62256d28",
-    //                     'pinata_secret_api_key': "9d335121cc2b2dd362b4a1c0de445d91a04017c4428a35003c02395e56e4f8ab"
-    //                 }
-    //             }
-    //         ).then(function (response) {
-    //             //handle response here
-    //             console.log("hashnull", response?.data?.IpfsHash)
-    //             swapsnull(response?.data?.IpfsHash);
-    //         }).catch(function (error) {
-    //             //handle error here
-    //             console.log('err', error)
-    //         });
-
-
-    //     }
-
-
-
-    // }
-
 
 
     const nftidn = async () => {
         if (acc && web3main) {
             const accounts = await web3main.eth.getAccounts();
-            console.log("buy");
-            // settokenid(accounts)
-            // setShow(true)
-
-
             let userwalletaddresss = accounts[0];
-            console.log('ack', accounts)
-            // window.web3 = new Web3(window.ethereum);
-            console.log('ccc', userwalletaddresss)
             let swaping = new web3main.eth.Contract(nft, addrs)
 
             swaping.methods.tokenidmint().call({ from: userwalletaddresss })
                 .then((id) => {
-                    // console.log('iddnew',String(Number(id)+1));
                     console.log(String(Number(id) + 1))
                     fixedsale(id)
 
@@ -182,9 +113,6 @@ function Astcreate({ acc, web3main }) {
 
 
             let userwalletaddresss = accounts[0];
-            console.log('ack', accounts)
-            // window.web3 = new Web3(window.ethereum);
-            console.log('ccc', userwalletaddresss)
             let swaping = new web3main.eth.Contract(nft, addrs)
             let collectionid = colid;
             let copies = 1;
@@ -193,16 +121,8 @@ function Astcreate({ acc, web3main }) {
                 .then((fees) => {
                     console.log(fees);
                     if (fees.status === true) {
-                        //   history.goBack('/create') 
                         const GameScore = Moralis.Object.extend("CREATECSDOGENFT");
                         const gameScore = new GameScore();
-                        gameScore.set("nftName", assetname);
-                        gameScore.set("nftOwner", ownername);
-                        gameScore.set("nftPrice", `${price}`);
-                        gameScore.set("nftDes", assetdescrip);
-                        gameScore.set("nftImg", e);
-                        gameScore.set("collectionId", collectionid);
-                        gameScore.set("nftId", fees?.events?.Transfer?.returnValues?.tokenId);
 
 
                         gameScore.save()
@@ -365,16 +285,7 @@ function Astcreate({ acc, web3main }) {
                                         <input type="text" className="form-control" name="dname" placeholder="Asset Name" onChange={(e) => setassetname(e.target.value)} required="required" />
                                     </div>
                                 </div>
-                                {/* <div class=" col-12 col-md-6" >
-                                    <select className="form-group mt-3" onChange={(e)=>setdatatype(e.target.value)}>
-                                        <option value="">Category (Choose):</option>
-                                        <option value="cathone">CathOne</option>
-                                        <option value="cathtwo">CathTwo</option>
-                                        <option value="caththree">CathThree</option>
-                                        <option value="cathfour">CathFour</option>
-                                       
-                                    </select>
-                                </div> */}
+                             
                                 <div className="col-12 col-md-12">
                                     <div className="form-group mt-3">
                                         <input type="number" className="form-control" name="price" placeholder="Price" min="0" step="any" onChange={(e) => setprice(e.target.value)} />
